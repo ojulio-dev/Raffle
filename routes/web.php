@@ -4,4 +4,6 @@ use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Counter;
 
-Route::get('/', Counter::class);
+use App\Livewire\RaffleApplication;
+
+Route::get('/', RaffleApplication::class);
