@@ -1,20 +1,34 @@
 <div>
 
-    <form wire:submit="$refresh">
+    @if ($success)
 
-        <x-ui.input 
+        <div class="flex flex-col items-center justify-center p-4 bg-green-100 border-1 rounded-lg border-green-300">
 
-            label="Enter your email" 
+            <h1 class="text-2xl font-bold">Thank you for your submisstion</h1>
 
-            name="email" 
+            <p class="mt-2">We will contact you soon.</p>
 
-            wire:model="email"
-        />
+        </div>
 
-        {{ $email }}
+    @else
 
-        <x-ui.button type="submit" class="mt-4">Submit</x-ui.button>
+        <form wire:submit="save">
 
-    </form>
+            <x-ui.input 
+
+                label="Enter your email" 
+
+                name="email" 
+
+                wire:model="email"
+            />
+
+            {{ $email }}
+
+            <x-ui.button type="submit" class="mt-4">Submit</x-ui.button>
+
+        </form>
+
+    @endif
 
 </div>
