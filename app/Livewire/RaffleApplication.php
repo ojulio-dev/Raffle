@@ -2,6 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\Applicant;
+use App\Models\Raffle;
+
 use Livewire\Component;
 
 use Illuminate\Contracts\View\View;
@@ -15,6 +18,14 @@ class RaffleApplication extends Component
 
     public function save(): void
     {
+
+        Applicant::create([
+
+            'raffle_id' => Raffle::first()->id,
+
+            'email' => $this->email
+
+        ]);
 
         $this->success = true;
 
