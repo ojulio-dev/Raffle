@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         
-        Raffle::factory(1)->create();
+        Raffle::factory(2)->create();
 
     }
 }
