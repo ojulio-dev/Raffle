@@ -41,4 +41,22 @@
 
     @endif
 
+    <br>
+
+    <div class="border border-gray-200 rounded-lg p-4">
+
+        <h3 class="text-lg font-medium text-gray-800 mb-4">Participants</h3>
+
+        <ul class="divide-y divide-gray-100">
+
+            @foreach($this->participants as $participant)
+
+                <li class="py-2 px-2 hover:bg-gray-50">{{ $participant }}</li>
+
+            @endforeach
+
+        </ul>
+
+    </div>
+
 </div>

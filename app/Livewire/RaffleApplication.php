@@ -8,7 +8,9 @@ use App\Models\Raffle;
 use Livewire\Component;
 
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
+use Livewire\Attributes\Computed;
 
 class RaffleApplication extends Component
 {
@@ -22,7 +24,7 @@ class RaffleApplication extends Component
     public function mount(): void
     {
 
-        $this->raffle = Raffle::InRandomOrder()->first();
+        $this->raffle = Raffle::first();
 
     }
 
@@ -59,6 +61,20 @@ class RaffleApplication extends Component
         ]);
 
         $this->success = true;
+
+    }
+
+    #[Computed]
+    public function participants(): Collection
+    {
+
+        return $this->raffle->applicants->map(
+
+            fn($applicant) =>
+
+            preg_replace("/(?<=.{2}).(?=.*@)/u", '*', $applicant->email)
+
+        );
 
     }
 
