@@ -59,4 +59,23 @@
 
     </div>
 
+    <br>
+
+    @if ($winner)
+
+        <div class="flex flex-col items-center justify-center p-4 bg-blue-100 border-blue-300 border-1 rounded-lg">
+
+            <h1 class="text-2xl font-bold">The winner is:</h1>
+
+            <p class="mt-2">{{ $winner }}</p>
+
+        </div>
+
+    @else
+
+        <x-ui.button  type="button" wire:click="getWinner" class="mt-4">Draw the winner</x-ui.button>
+
+    @endif
+
+
 </div>

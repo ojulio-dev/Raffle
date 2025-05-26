@@ -19,6 +19,8 @@ class RaffleApplication extends Component
 
     public ?string $email = null;
 
+    public ?string $winner = null;
+
     public bool $success = false;
 
     public function mount(): void
@@ -44,6 +46,15 @@ class RaffleApplication extends Component
             ]
 
         ];
+
+    }
+
+    public function getWinner(): void
+    {
+
+        $winner = $this->raffle->applicants()->inRandomOrder()->first();
+
+        $this->winner = $winner->email;
 
     }
 
