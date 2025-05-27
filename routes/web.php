@@ -3,12 +3,15 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\RaffleApplication;
-use App\Livewire\Auth;
 use App\Livewire\Page;
 
-Route::get('/login', Auth\Login::class)->middleware('guest')->name('login');
+use App\Http\Controllers\Auth;
+
+Route::get('/login', Page\Auth\Login::class)->middleware('guest')->name('login');
 
 Route::middleware('auth')->group(function() {
+
+    Route::get('/logout', Auth\LogoutController::class)->name('logout');
 
     Route::get('/admin/raffle', Page\Admin\Raffle::class)->name('admin.raffle');
 

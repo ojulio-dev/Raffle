@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Auth;
+namespace App\Livewire\Page\Auth;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
