@@ -14,7 +14,21 @@ class DatabaseSeeder extends Seeder
         
         Raffle::factory(2)->create();
 
-        User::factory()->create(['email' => 'joe@doe.com']);
+        User::factory()->create([
+            
+            'name' => 'Joe Doe',
+            'email' => 'joe@doe.com',
+            'is_admin' => true
+        
+        ]);
+
+        User::factory()->create([
+            
+            'name' => 'Jane Doe',
+            'email' => 'jane@doe.com',
+            'is_admin' => false
+        
+        ]);
 
     }
 }

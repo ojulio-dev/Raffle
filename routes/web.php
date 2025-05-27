@@ -13,7 +13,9 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/logout', Auth\LogoutController::class)->name('logout');
 
-    Route::get('/admin/raffle', Page\Admin\Raffle::class)->name('admin.raffle');
+    Route::get('/admin/raffle', Page\Admin\Raffle::class)
+        ->middleware('can:admin')
+        ->name('admin.raffle');
 
 });
 
