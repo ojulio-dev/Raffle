@@ -25,16 +25,6 @@
                 wire:model="email"
             />
 
-            @error('email')
-
-                <div class="text-red-500 text-sm mt-2">
-
-                    {{ $message }}
-
-                </div>
-
-            @enderror
-
             <x-ui.button type="submit" class="mt-4">Submit</x-ui.button>
 
         </form>
