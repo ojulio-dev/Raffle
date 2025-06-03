@@ -33,9 +33,9 @@
 
     <br>
 
-    <div class="border border-gray-200 rounded-lg p-4">
+    <div class="border border-gray-200 dark:border-gray-800 rounded-lg p-4">
 
-        <h3 class="text-lg font-medium text-gray-800 mb-4">Participants</h3>
+        <h3 class="text-lg font-medium text-gray-800 dark:text-gray-300 mb-4">Participants</h3>
 
         <ul class="divide-y divide-gray-100">
 
