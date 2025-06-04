@@ -2,11 +2,21 @@
     
     @if ($modal)
 
-        <div>
+    <x-ui.modal title="Create new raffle">
 
-            oi do raffle create
+        <form wire:submit="handle" class="space-y-4">
 
-        </div>
+            <x-ui.input label="Name" name="name" type="text" wire:model.defer="name"
+                placeholder="Enter raffle name" />
+
+            <x-ui.button type="submit" class="w-full" wire:loading.attr="disabled" wire:target="handle">
+
+                Save
+
+            </x-ui.button>
+        </form>
+
+    </x-ui.modal>
 
     @endif
 
