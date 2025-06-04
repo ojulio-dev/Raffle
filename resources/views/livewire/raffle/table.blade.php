@@ -1,41 +1,53 @@
-<div>
+<div class="space-y-4">
 
-    <table>
+    <x-ui.h1 class="flex justify-between items-center">
 
-        <thead>
+        <span>Raffles</span>
 
-            <tr>
+        <x-ui.button @click="$dispatch('raffle::create')">+ Create</x-ui.button>
 
-                <th>ID</th>
-                <th>Name</th>
-                <th></th>
+    </x-ui.h1>
 
-            </tr>
+    <x-ui.table>
 
-        </thead>
+        <x-ui.table.thead>
 
-        <tbody>
+            <x-ui.table.th>ID</x-ui.table.th>
 
-            @foreach($this->records as $record)
-    
-                <tr>
+            <x-ui.table.th>Name</x-ui.table.th>
 
-                    <td>{{ $record->id }}</td>
-                    <td>{{ $record->name }}</td>
-                    <td>
+            <x-ui.table.th></x-ui.table.th>
 
-                        ...
+        </x-ui.table.thead>
 
-                    </td>
+        <x-ui.table.tbody>
 
-                </tr>
-    
+
+            @foreach ($this->records as $record)
+            
+                <x-ui.table.tr>
+
+                    <x-ui.table.td>{{ $record->id }}</x-ui.table.td>
+
+                    <x-ui.table.td>{{ $record->name }}</x-ui.table.td>
+
+                    <x-ui.table.td>
+                        
+                        <x-ui.button @click="$dispatch('raffle::edit')">Edit</x-ui.button>
+
+                        <x-ui.button @click="$dispatch('raffle::delete')">Delete</x-ui.button>
+
+                        <x-ui.button @click="$dispatch('raffle::publish')">Publish</x-ui.button>
+                    
+                    </x-ui.table.td>
+
+                </x-ui.table.tr>
+            
             @endforeach
 
-        </tbody>
+        </x-ui.table.tbody>
 
-
-    </table>
+    </x-ui.table>
 
     {{ $this->records->links() }}
 

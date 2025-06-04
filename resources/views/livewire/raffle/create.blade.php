@@ -1,3 +1,13 @@
 <div>
-    {{-- Be like water. --}}
+    
+    @if ($modal)
+
+        <div>
+
+            oi do raffle create
+
+        </div>
+
+    @endif
+
 </div>

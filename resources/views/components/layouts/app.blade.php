@@ -12,7 +12,7 @@
 
         @vite(['resources/css/app.css', 'resources/js/app,js'])
     </head>
-    <body class="bg-[#FDFDFC] text-[#1b1b18] dark:bg-gray-950 dark:text-gray-200">
+    <body class="bg-[#FDFDFC] text-[#1b1b18] dark:bg-gray-950 dark:text-gray-200" x-data>
 
         @auth
             
@@ -57,5 +57,6 @@
             {{ $slot }}
 
         </x-ui.container>
+        
     </body>
 </html>
