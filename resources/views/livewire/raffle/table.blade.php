@@ -33,7 +33,7 @@
 
                     <x-ui.table.td>
                         
-                        <x-ui.button @click="$dispatch('raffle::edit')">Edit</x-ui.button>
+                        <x-ui.button @click="$dispatch('raffle::edit', { id: {{ $record->id }} })">Edit</x-ui.button>
 
                         <x-ui.button @click="$dispatch('raffle::delete')">Delete</x-ui.button>
 
