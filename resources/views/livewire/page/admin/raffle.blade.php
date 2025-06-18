@@ -6,6 +6,8 @@
 
     <livewire:raffle.destroy />
 
+    <livewire:raffle.publish />
+
     <livewire:raffle.table />
 
 </div>
