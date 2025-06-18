@@ -35,7 +35,7 @@
                         
                         <x-ui.button @click="$dispatch('raffle::edit', { id: {{ $record->id }} })">Edit</x-ui.button>
 
-                        <x-ui.button @click="$dispatch('raffle::delete')">Delete</x-ui.button>
+                        <x-ui.button @click="$dispatch('raffle::destroy', { id: {{ $record->id }} })">Delete</x-ui.button>
 
                         <x-ui.button @click="$dispatch('raffle::publish')">Publish</x-ui.button>
                     

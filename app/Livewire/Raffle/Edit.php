@@ -3,6 +3,7 @@
 namespace App\Livewire\Raffle;
 
 use App\Models\Raffle;
+use Illuminate\Contracts\View\View;
 use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -44,7 +45,7 @@ class Edit extends Component
 
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.raffle.edit');
     }

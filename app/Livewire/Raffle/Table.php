@@ -11,7 +11,6 @@ use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-#[On('raffle:refresh')]
 class Table extends Component
 {
 
@@ -25,7 +24,7 @@ class Table extends Component
 
     }
 
-
+    #[On('raffle::refresh')]
     public function render(): View
     {
         return view('livewire.raffle.table');
