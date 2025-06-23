@@ -51,6 +51,12 @@
                                 Publish
                             </x-ui.button>
 
+                        @else
+
+                            <x-ui.button @click="$dispatch('raffle::unpublish', { id: {{ $record->id }} })">
+                                Unpublish
+                            </x-ui.button>
+
                         @endunless
                     
                     </x-ui.table.td>

@@ -8,6 +8,8 @@
 
     <livewire:raffle.publish />
 
+    <livewire:raffle.unpublish />
+
     <livewire:raffle.table />
 
 </div>
