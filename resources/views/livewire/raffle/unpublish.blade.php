@@ -2,7 +2,7 @@
     
     @if ($modal)
 
-    <x-ui.modal title="Deleting Raffle #{{ $id }}">
+    <x-ui.modal title="Deleting Raffle #{{ $raffle->id }}">
 
         <p class="text-yellow-700 font-bold mb-4 bg-yellow-200 rounded border-2 border-yellow-400 p-4">
 

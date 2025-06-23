@@ -13,10 +13,18 @@ class Edit extends Component
 
     public bool $modal = false;
 
-    public ?int $id = null;
+    public ?Raffle $raffle = null;
 
-    #[Validate(['required', 'string', 'min:5', 'max:255', 'unique:raffles,name'])]
-    public string $name = '';
+    public function rules(): array
+    {
+
+        return [
+
+            'raffle.name' => ['required', 'string', 'min:5', 'max:255', 'unique:raffles,name' . $this->raffle->id]
+
+        ];
+
+    }
 
     #[On('raffle::edit')]
     public function open(int $id): void
@@ -24,11 +32,7 @@ class Edit extends Component
 
         $this->modal = true;
 
-        $raffle = Raffle::findOrFail($id);
-
-        $this->id = $raffle->id;
-
-        $this->name = $raffle->name;
+        $this->raffle = Raffle::findOrFail($id);
 
     }
 
@@ -37,7 +41,7 @@ class Edit extends Component
 
         $this->validate();
 
-        Raffle::where('id', $this->id)->update(['name' => $this->name]);
+        $this->raffle->save();
 
         $this->dispatch('raffle::refresh');
 
