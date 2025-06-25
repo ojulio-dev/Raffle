@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Livewire\Home;
 use App\Livewire\RaffleApplication;
 use App\Livewire\Page;
 
@@ -19,4 +20,5 @@ Route::middleware('auth')->group(function() {
 
 });
 
-Route::get('/', RaffleApplication::class)->name('home');
+Route::get('/', Home::class)->name('home');
+Route::get('/{raffle}', RaffleApplication::class)->name('raffle.application');

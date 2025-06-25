@@ -23,10 +23,10 @@ class RaffleApplication extends Component
 
     public bool $success = false;
 
-    public function mount(): void
+    public function mount(Raffle $raffle): void
     {
 
-        $this->raffle = Raffle::first();
+        $this->raffle = $raffle;
 
     }
 
