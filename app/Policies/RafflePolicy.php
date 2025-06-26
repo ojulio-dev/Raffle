@@ -22,4 +22,10 @@ class RafflePolicy
 
     }
 
+    public function drawWinner(?User $user, Raffle $raffle): bool {
+
+        return !! $user?->is_admin;
+
+    }
+
 }
