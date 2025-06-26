@@ -18,6 +18,7 @@ class Home extends Component
     {
 
         return Raffle::query()
+            ->withCount('applicants')
             ->whereNotNull('published_at')
             ->get();
 
