@@ -60,6 +60,12 @@ class RaffleApplication extends Component
 
         $this->winner = $winner->email;
 
+        $this->raffle->winners()->create([
+
+            'applicant_id' => $winner->id
+
+        ]);
+
     }
 
     public function save(): void
