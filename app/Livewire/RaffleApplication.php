@@ -56,6 +56,14 @@ class RaffleApplication extends Component
 
         $this->authorize('drawWinner', $this->raffle);
 
+        if ($this->raffle->applicants()->count() < 2) {
+
+            $this->addError('winner', 'At least two participants are required to perform the draw.');
+
+            return;
+
+        }
+
         $winner = $this->raffle->applicants()->inRandomOrder()->first();
 
         $this->winner = $winner->email;
