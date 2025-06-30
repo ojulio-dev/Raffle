@@ -10,6 +10,10 @@
                     {{ $raffle->applicants_count }} participants
                 </p>
 
+                <p class="text-sm ">
+                    {{ $raffle->winners_count }} winners
+                </p>
+
                 <x-ui.button>
                     Join Now
                 </x-ui.button>

@@ -4,14 +4,14 @@
 
     @if ($success)
 
-        <div class="flex flex-col items-center justify-center p-4 bg-green-100 border-1 rounded-lg border-green-300">
+        <div class="flex flex-col items-center justify-center p-4 bg-green-100 dark:bg-green-900 border border-green-400 dark:border-green-600 rounded-lg">
 
-            <h1 class="text-2xl font-bold">Thank you for your submisstion</h1>
+            <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Thank you for your submission!</h1>
 
-            <p class="mt-2">We will contact you soon.</p>
+            <p class="mt-2 text-gray-700 dark:text-gray-300">We will contact you soon.</p>
 
         </div>
-
+        
     @else
 
         <form wire:submit="save">
@@ -41,7 +41,7 @@
 
             @foreach($this->participants as $participant)
 
-                <li class="py-2 px-2 hover:bg-gray-50">{{ $participant }}</li>
+                <li class="py-2 px-2 hover:bg-gray-50 dark:hover:bg-gray-800">{{ $participant }}</li>
 
             @endforeach
 
@@ -51,13 +51,18 @@
 
     <br>
 
-    @if ($winner)
+    @if ($this->winners->count())
 
         <div class="relative flex flex-col items-center justify-center p-4 bg-blue-100 dark:bg-blue-900 border border-blue-400 dark:border-blue-600 rounded-lg">
 
             <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-100">The winner is:</h1>
 
-            <p class="mt-2 text-gray-700 dark:text-gray-300">{{ $winner }}</p>
+            @foreach($this->winners as $winner)
+            
+                <p class="mt-2 text-gray-700 dark:text-gray-300">{{ $winner->applicant->email }}</p>
+            
+            @endforeach
+
 
         </div>
 

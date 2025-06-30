@@ -19,8 +19,6 @@ class RaffleApplication extends Component
 
     public ?string $email = null;
 
-    public ?string $winner = null;
-
     public bool $success = false;
 
     public function mount(Raffle $raffle): void
@@ -51,6 +49,16 @@ class RaffleApplication extends Component
 
     }
 
+    #[Computed]
+    public function winners(): Collection
+    {
+
+        return $this->raffle->winners()
+            ->with('applicant')
+            ->get();
+
+    }
+
     public function getWinner(): void
     {
 
@@ -64,9 +72,20 @@ class RaffleApplication extends Component
 
         }
 
-        $winner = $this->raffle->applicants()->inRandomOrder()->first();
+        $winners = $this->raffle->winners->pluck('applicant_id')->toArray();
 
-        $this->winner = $winner->email;
+        $winner = $this->raffle->applicants()
+            ->whereNotIn('id', $winners)
+            ->inRandomOrder()
+            ->first();
+
+        if (!$winner) {
+
+            $this->addError('winner', 'No more participants available for the draw.');
+
+            return;
+
+        }
 
         $this->raffle->winners()->create([
 
@@ -81,9 +100,7 @@ class RaffleApplication extends Component
 
         $this->validate();
 
-        Applicant::create([
-
-            'raffle_id' => $this->raffle->id,
+        $this->raffle->applicants()->create([
 
             'email' => $this->email
 
@@ -97,7 +114,7 @@ class RaffleApplication extends Component
     public function participants(): Collection
     {
 
-        return $this->raffle->applicants->map(
+        return $this->raffle->applicants()->get()->map(
 
             fn($applicant) =>
 
