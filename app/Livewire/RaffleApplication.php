@@ -50,12 +50,10 @@ class RaffleApplication extends Component
     }
 
     #[Computed]
-    public function winners(): Collection
+    public function winners(): int
     {
 
-        return $this->raffle->winners()
-            ->with('applicant')
-            ->get();
+        return $this->raffle->winners()->count();
 
     }
 
