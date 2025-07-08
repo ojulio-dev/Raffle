@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Raffle;
 
 use App\Models\Applicant;
 use App\Models\Raffle;
@@ -12,7 +12,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Computed;
 
-class RaffleApplication extends Component
+class Application extends Component
 {
 
     public ?Raffle $raffle = null;
@@ -49,49 +49,49 @@ class RaffleApplication extends Component
 
     }
 
-    #[Computed]
-    public function winners(): int
-    {
+    // #[Computed]
+    // public function winners(): int
+    // {
 
-        return $this->raffle->winners()->count();
+    //     return $this->raffle->winners()->count();
 
-    }
+    // }
 
-    public function getWinner(): void
-    {
+    // public function getWinner(): void
+    // {
 
-        $this->authorize('drawWinner', $this->raffle);
+    //     $this->authorize('drawWinner', $this->raffle);
 
-        if ($this->raffle->applicants()->count() < 2) {
+    //     if ($this->raffle->applicants()->count() < 2) {
 
-            $this->addError('winner', 'At least two participants are required to perform the draw.');
+    //         $this->addError('winner', 'At least two participants are required to perform the draw.');
 
-            return;
+    //         return;
 
-        }
+    //     }
 
-        $winners = $this->raffle->winners->pluck('applicant_id')->toArray();
+    //     $winners = $this->raffle->winners->pluck('applicant_id')->toArray();
 
-        $winner = $this->raffle->applicants()
-            ->whereNotIn('id', $winners)
-            ->inRandomOrder()
-            ->first();
+    //     $winner = $this->raffle->applicants()
+    //         ->whereNotIn('id', $winners)
+    //         ->inRandomOrder()
+    //         ->first();
 
-        if (!$winner) {
+    //     if (!$winner) {
 
-            $this->addError('winner', 'No more participants available for the draw.');
+    //         $this->addError('winner', 'No more participants available for the draw.');
 
-            return;
+    //         return;
 
-        }
+    //     }
 
-        $this->raffle->winners()->create([
+    //     $this->raffle->winners()->create([
 
-            'applicant_id' => $winner->id
+    //         'applicant_id' => $winner->id
 
-        ]);
+    //     ]);
 
-    }
+    // }
 
     public function save(): void
     {
@@ -124,6 +124,6 @@ class RaffleApplication extends Component
 
     public function render(): View
     {
-        return view('livewire.raffle-application');
+        return view('livewire.raffle.application');
     }
 }
