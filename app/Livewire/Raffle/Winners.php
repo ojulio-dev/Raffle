@@ -7,13 +7,15 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Collection as SupportCollection;
 use Livewire\Attributes\Computed;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
+#[On('winners::refresh')]
 class Winners extends Component
 {
     public Raffle $raffle;
 
-    public bool $show = true;
+    public bool $show = false;
 
     public function toggleShow():void
     {
