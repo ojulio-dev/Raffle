@@ -12,6 +12,8 @@ class DrawWinner extends Component
     
     public ?Raffle $raffle = null;
 
+    public ?string $winner = null;
+
     #[Computed]
     public function winners(): int
     {
@@ -33,6 +35,32 @@ class DrawWinner extends Component
 
         }
 
+        $this->rulete();
+
+        $this->getWinner();
+
+    }
+
+    public function rulete(): void
+    {
+
+        $applicants = $this->raffle->applicants()
+            ->inRandomOrder()
+            ->pluck('email');
+
+        foreach($applicants as $email) {
+
+            usleep(80_000);
+
+            $this->stream('winner', $email, true);
+
+        }
+
+    }
+
+    public function getWinner(): void
+    {
+
         $winners = $this->raffle->winners->pluck('applicant_id')->toArray();
 
         $winner = $this->raffle->applicants()
@@ -53,6 +81,8 @@ class DrawWinner extends Component
             'applicant_id' => $winner->id
 
         ]);
+
+        $this->winner = $winner->email;
 
         $this->dispatch('winners::refresh')->to('raffle.winners');
 
