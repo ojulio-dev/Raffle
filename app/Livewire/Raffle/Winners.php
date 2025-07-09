@@ -30,6 +30,7 @@ class Winners extends Component
 
         return $this->raffle->winners()
             ->with('applicant')
+            ->latest()
             ->get()
             ->map(fn($winner) => 
 

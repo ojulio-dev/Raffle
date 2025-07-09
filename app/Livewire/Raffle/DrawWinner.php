@@ -86,6 +86,8 @@ class DrawWinner extends Component
 
         $this->dispatch('winners::refresh')->to('raffle.winners');
 
+        $this->js('confetti.addConfetti()');
+
     }
 
     public function render()
